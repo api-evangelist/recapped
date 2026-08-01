@@ -1,0 +1,25 @@
+# RecappED
+
+> RecappED (recapped.io) is an AI-powered digital sales room and customer onboarding platform that consolidates buyer and seller activity — mutual action plans, deal management, buyer-engagement tracking, and sales-to-implementation handoffs — into a single collaborative workspace. The product does not publish a public REST API or developer portal; integrations are delivered through native connectors (Salesforce, HubSpot, Slack, Gong, Clari) and Zapier. Note: the platform announced it is shutting down on 2026-07-31 and is not accepting new customers.
+
+## Product
+- [Recapped home](https://www.recapped.io/): AI digital sales room and onboarding platform.
+- [Pricing](https://www.recapped.io/pricing): Plans and pricing.
+- [Request a demo](https://www.recapped.io/demo): Product demo request.
+- [Login / Free trial](https://app.recapped.io): Application sign-in and sign-up.
+
+## Integrations
+- [Integrations](https://www.recapped.io/integrations): Native connectors and Zapier automation (Salesforce, HubSpot, Slack, Gong, Clari, Zoom, Zapier, and more).
+- [CRM DeepSync](https://www.recapped.io/deepsync): Two-way CRM synchronization.
+- [Salesforce](https://www.recapped.io/salesforce): Salesforce integration.
+- [HubSpot](https://www.recapped.io/hubspot): HubSpot integration.
+- [Workflow automations](https://www.recapped.io/workflows): No-code workflow automations.
+
+## Security & Legal
+- [Security](https://www.recapped.io/security): Security posture — SOC 2, GDPR, and CCPA compliance; AWS hosting; SSL/HTTPS; SSO. Security contact: security@recapped.io.
+- [Terms of Service](https://www.recapped.io/terms): Terms of service.
+- [Privacy Policy](https://www.recapped.io/privacy): Privacy policy.
+
+## Content
+- [Blog](https://www.recapped.io/blog): Company and sales-enablement blog.
+- [Templates](https://www.recapped.io/templates): Sales room template library.

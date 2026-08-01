@@ -1,7 +1,15 @@
 aid: recapped
 name: RecappED
-description: 'RecappED is a company surfaced as a portfolio company of crv and added to the API Evangelist
-  network as a stub for enrichment. Sector: sales. This profile is a lead awaiting the enrichment pipeline.'
+description: 'RecappED (recapped.io) is an AI-powered digital sales room and customer
+  onboarding platform for B2B revenue teams. It consolidates the buying and selling
+  process into a single collaborative workspace with mutual action plans, deal
+  management, buyer-engagement tracking, AI deal intelligence, an AI sales coach,
+  and structured handoffs from sales to implementation. Integration with CRM and
+  sales tooling is delivered through native connectors (Salesforce, HubSpot, Slack,
+  Gong, Clari, Zoom) and Zapier rather than a public developer API; no OpenAPI,
+  developer portal, or public REST reference is published. The platform announced it
+  is shutting down on 2026-07-31 and is not accepting new customers. Surfaced as a
+  CRV portfolio company and enriched into the API Evangelist network.'
 url: https://raw.githubusercontent.com/api-evangelist/recapped/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +17,29 @@ x-backed-by:
 - crv
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://cdn.prod.website-files.com/61af7c094ef4b24b1e3eda92/61dee2a765d386544289a873_Link%20preview%20image.jpg
 tags:
 - Company
 - Sales
+- Sales Enablement
+- Digital Sales Room
+- Customer Onboarding
+- CRM
+- Revenue Operations
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -24,3 +49,30 @@ maintainers:
 common:
 - type: Website
   url: https://www.recapped.io/
+- type: Pricing
+  url: https://www.recapped.io/pricing
+- type: SignUp
+  url: https://app.recapped.io
+- type: Login
+  url: https://app.recapped.io
+- type: Support
+  url: mailto:help@recapped.io
+- type: Blog
+  url: https://www.recapped.io/blog
+- type: TermsOfService
+  url: https://www.recapped.io/terms
+- type: PrivacyPolicy
+  url: https://www.recapped.io/privacy
+- type: Compliance
+  url: https://www.recapped.io/security
+- type: TrustCenter
+  url: security/recapped-trust-center.yml
+- type: DomainSecurity
+  url: security/recapped-domain-security.yml
+- type: LLMsTxt
+  url: llms/recapped-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1
