@@ -8,8 +8,11 @@ description: 'RecappED (recapped.io) is an AI-powered digital sales room and cus
   sales tooling is delivered through native connectors (Salesforce, HubSpot, Slack,
   Gong, Clari, Zoom) and Zapier rather than a public developer API; no OpenAPI,
   developer portal, or public REST reference is published. The platform announced it
-  is shutting down on 2026-07-31 and is not accepting new customers. Surfaced as a
-  CRV portfolio company and enriched into the API Evangelist network.'
+  is shutting down on 2026-07-31 and is not accepting new customers; probed again on
+  2026-08-13 the site and application were still serving, with the shutdown banner on
+  every page. The one machine-oriented document the company publishes is the schema of
+  the customer offboarding data export, in the github.com/Recapped organization.
+  Surfaced as a CRV portfolio company and enriched into the API Evangelist network.'
 url: https://raw.githubusercontent.com/api-evangelist/recapped/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -30,7 +33,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 image: https://cdn.prod.website-files.com/61af7c094ef4b24b1e3eda92/61dee2a765d386544289a873_Link%20preview%20image.jpg
 tags:
 - Company
@@ -71,8 +74,38 @@ common:
   url: security/recapped-domain-security.yml
 - type: LLMsTxt
   url: llms/recapped-llms.txt
+- type: GitHubOrganization
+  url: https://github.com/Recapped
+- type: Plans
+  url: plans/recapped-plans-pricing.yml
+- type: Lifecycle
+  url: lifecycle/recapped-lifecycle.yml
+- type: DataModel
+  url: data-model/recapped-data-model.yml
+- type: Conformance
+  url: conformance/recapped-conformance.yml
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-13'
   status: enriched
-  artifacts_added: 3
+  artifacts_added: 7
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    RecappED shipped an end-user sales-room product with no developer program at
+    all — api.recapped.io, docs.recapped.io and developer.recapped.io have no DNS
+    record, /llms.txt and every /.well-known/ path 404 on www.recapped.io, and
+    the company announced on 2026-07-31 that it is shutting down; the only
+    machine-oriented document it publishes is the customer data-export schema in
+    github.com/Recapped/customer-offboarding-docs.
+  evidence:
+  - url: https://www.recapped.io/llms.txt
+    status: 404
+  - url: https://www.recapped.io/openapi.json
+    status: 404
+  - url: https://www.recapped.io/.well-known/agent-card.json
+    status: 404
+  - url: https://raw.githubusercontent.com/Recapped/customer-offboarding-docs/main/README.md
+    status: 200
+  checked: '2026-08-13'
