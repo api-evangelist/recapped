@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live probes of the /.well-known/ discovery surface on every host RecappED
+  publishes — the marketing/product site (www.recapped.io) and the application
+  host (app.recapped.io). RecappED publishes no API host: api.recapped.io,
+  docs.recapped.io and developer(s).recapped.io have no DNS record at all, so
+  there is no third host to probe. Nothing was saved: every path either 404s or
+  returns an HTML shell.
+result: no-documents-found
+pointer_emitted: false
+pointer_note: >-
+  No WellKnown or SecurityTxt pointer is wired in apis.yml because not one path
+  returned a real document. www.recapped.io is a Webflow site that answers every
+  /.well-known/* request with a 404 page reading "Invalid .well-known path";
+  app.recapped.io is a single-page application whose catch-all returns HTTP 200
+  with the app's HTML shell for EVERY path, including nonsense ones — that is a
+  soft-200, not a document, and is recorded here as a miss.
+hosts:
+  - host: https://www.recapped.io
+    role: marketing and product site (Webflow)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /robots.txt
+        status: 200
+        type: text/plain
+        note: >-
+          Served, but a robots.txt is not a discovery document and is not saved
+          or pointed at. It advertises only https://www.recapped.io/sitemap.xml.
+  - host: https://app.recapped.io
+    role: web application (SPA)
+    soft_200: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        real_document: false
+        note: SPA shell, not a document.
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent.json
+        status: 200
+        content_type: text/html
+        real_document: false
+  - host: https://api.recapped.io
+    role: probed as a candidate API host
+    documents: []
+    note: NXDOMAIN — no DNS record; connection could not be established (curl exit 6, status 000).

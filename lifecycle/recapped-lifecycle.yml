@@ -1,0 +1,70 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://www.recapped.io/ (sitewide shutdown banner),
+  https://www.recapped.io/pricing, https://github.com/Recapped/customer-offboarding-docs,
+  DNS/HTTP probes of status.recapped.io and help.recapped.io.
+status: end-of-life
+end_of_life:
+  announced_on_page: https://www.recapped.io/
+  banner_text: >-
+    Unfortunately, after 7 long years Recapped is shutting down 7/31/2026 and
+    will not be taking on new customers.
+  shutdown_date: '2026-07-31'
+  accepting_new_customers: false
+  observed: '2026-08-13'
+  observed_note: >-
+    Probed 13 days after the announced shutdown date. www.recapped.io still
+    returns HTTP 200 and app.recapped.io still returns HTTP 200; the banner is
+    still served on every page, and the pricing page still renders all tiers.
+    The company published an end-of-life date, not a wind-down schedule for a
+    developer surface — there was never a public API to sunset.
+  customer_offboarding:
+    url: https://github.com/Recapped/customer-offboarding-docs
+    description: >-
+      RecappED published a public GitHub repository documenting the schema of the
+      customer data export produced for offboarding — workspace metadata, tabs,
+      content blocks, tasks, comments — plus instructions for reconstructing a
+      workspace from the exported reports. This is the only machine-oriented
+      documentation RecappED publishes, and it exists because of the shutdown.
+      Captured in data-model/recapped-data-model.yml.
+versioning:
+  scheme: none-published
+  mechanism: null
+  docs: null
+  notes: >-
+    No public API, therefore no API versioning scheme, no version header and no
+    version-pinning policy is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    RecappED publishes no deprecation policy and no RFC 8594 Sunset/Deprecation
+    header practice. The 2026-07-31 company shutdown is a one-time end-of-life
+    announcement, not a published deprecation policy, so no `Deprecation` pointer
+    is wired in apis.yml.
+sla:
+  url: null
+  public_uptime_target: null
+  notes: >-
+    "Guaranteed SLA's" is listed as a feature of the Automate/Enterprise tier on
+    the pricing page, but no SLA document, uptime target or credit schedule is
+    published publicly.
+status_page:
+  url: null
+  probed:
+    - host: status.recapped.io
+      dns: statuspage.freshping.io
+      http_status: 000
+      note: >-
+        A CNAME to Freshping exists, but no HTTPS connection could be
+        established — the status page is not reachable. No `StatusPage` pointer
+        is wired.
+    - host: help.recapped.io
+      dns: d2p13fexdxj06z.cloudfront.net
+      http_status: 404
+      note: CloudFront distribution answers "Not found" — the help center is gone.
+changelog:
+  url: null
+  notes: No product changelog or release-notes page is published; the blog is marketing content.
+deprecated_operations: []

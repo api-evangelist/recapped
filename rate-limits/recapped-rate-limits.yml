@@ -1,0 +1,21 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: RecappED
+providerId: recapped
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://www.recapped.io/pricing, https://www.recapped.io/integrations,
+  https://www.recapped.io/features/zapier-integration, https://www.recapped.io/security
+limit_count: 0
+headers: {}
+responseCodes: {}
+limits: []
+note: >-
+  An honest zero. RecappED publishes no public API, no developer portal and no
+  API reference, so there are no request quotas, no rate-limit response headers
+  and no documented throttling behavior to record. Every pricing tier is
+  expressed in seats and features; not one names an API call quota. No pointer of
+  type RateLimits is wired in apis.yml, because recording an absence must not be
+  scored as a published rate-limit signal.
+pointer_emitted: false

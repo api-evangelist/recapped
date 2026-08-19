@@ -1,25 +1,40 @@
 # RecappED
 
-> RecappED (recapped.io) is an AI-powered digital sales room and customer onboarding platform that consolidates buyer and seller activity — mutual action plans, deal management, buyer-engagement tracking, and sales-to-implementation handoffs — into a single collaborative workspace. The product does not publish a public REST API or developer portal; integrations are delivered through native connectors (Salesforce, HubSpot, Slack, Gong, Clari) and Zapier. Note: the platform announced it is shutting down on 2026-07-31 and is not accepting new customers.
+> RecappED (recapped.io) was an AI-powered digital sales room and customer onboarding platform for B2B revenue teams — mutual action plans, deal management, buyer-engagement tracking, AI deal scoring and coaching, and sales-to-implementation handoffs in one collaborative workspace. RecappED published no public REST API, no OpenAPI, no developer portal and no MCP or A2A surface; programmatic connectivity was sold as native connectors (Salesforce, HubSpot, Slack, Gong, Zoom) and a Zapier integration. The company announced it is shutting down on 2026-07-31 and is not taking on new customers; the site and application were still serving as of 2026-08-13.
+
+## Status
+- Shutdown announced sitewide: "Unfortunately, after 7 long years Recapped is shutting down 7/31/2026 and will not be taking on new customers." (banner on every page of https://www.recapped.io/)
+- Not accepting new customers. Pricing tiers are still rendered but are not purchasable.
 
 ## Product
 - [Recapped home](https://www.recapped.io/): AI digital sales room and onboarding platform.
-- [Pricing](https://www.recapped.io/pricing): Plans and pricing.
-- [Request a demo](https://www.recapped.io/demo): Product demo request.
-- [Login / Free trial](https://app.recapped.io): Application sign-in and sign-up.
-
-## Integrations
-- [Integrations](https://www.recapped.io/integrations): Native connectors and Zapier automation (Salesforce, HubSpot, Slack, Gong, Clari, Zoom, Zapier, and more).
-- [CRM DeepSync](https://www.recapped.io/deepsync): Two-way CRM synchronization.
-- [Salesforce](https://www.recapped.io/salesforce): Salesforce integration.
-- [HubSpot](https://www.recapped.io/hubspot): HubSpot integration.
+- [Pricing](https://www.recapped.io/pricing): Per-seat and flat-monthly tiers; no API or developer tier.
+- [Integrations](https://www.recapped.io/integrations): Native connectors and Zapier automation.
 - [Workflow automations](https://www.recapped.io/workflows): No-code workflow automations.
+- [Salesforce integration](https://www.recapped.io/salesforce): Bi-directional Salesforce sync and embedded rooms.
+- [HubSpot integration](https://www.recapped.io/hubspot): HubSpot integration.
+- [Zapier integration](https://www.recapped.io/features/zapier-integration): Marketed connectivity to 7,000+ apps. No public Zapier app listing exists (zapier.com/apps/recapped* returns 404).
+- [Templates](https://www.recapped.io/templates): Sales room and mutual action plan template library.
+- [Request a demo](https://www.recapped.io/demo): Product demo request.
+- [Login / free account](https://app.recapped.io): Application sign-in and sign-up.
+
+## Developer surface
+There is none. Probed 2026-08-13: no OpenAPI/Swagger at any location on www.recapped.io or app.recapped.io; api.recapped.io, docs.recapped.io and developer(s).recapped.io have no DNS record; every /.well-known/ path 404s on www.recapped.io and returns an HTML SPA shell on app.recapped.io; no /llms.txt (404); no MCP server; no A2A agent card; no GraphQL endpoint; no published SDK on npm, PyPI, RubyGems or NuGet.
+
+- [GitHub organization](https://github.com/Recapped): Two public repositories.
+- [Customer offboarding docs](https://github.com/Recapped/customer-offboarding-docs): The one machine-oriented document RecappED publishes — the schema of the customer data export (workspace_meta_data, tabs_data, blocks_data, tasks_data, comments_data), the join keys, and the procedure for reconstructing a workspace from the exported reports.
 
 ## Security & Legal
-- [Security](https://www.recapped.io/security): Security posture — SOC 2, GDPR, and CCPA compliance; AWS hosting; SSL/HTTPS; SSO. Security contact: security@recapped.io.
-- [Terms of Service](https://www.recapped.io/terms): Terms of service.
-- [Privacy Policy](https://www.recapped.io/privacy): Privacy policy.
+- [Security](https://www.recapped.io/security): SOC 1 / SOC 2 claimed, penetration tests and third-party audits, subprocessor list available under NDA, AWS hosting, 256-bit SSL/HTTPS, full audit logging, SSO via Okta, Google, LinkedIn and Microsoft. GDPR and CCPA badges. Reports are not published; they are available on request under NDA.
+- [Terms of Service](https://www.recapped.io/terms)
+- [Privacy Policy](https://www.recapped.io/privacy): Includes a CCPA/CPRA section for California residents.
+- [Acceptable Use Policy](https://www.recapped.io/aup)
+- [Cookie Policy](https://www.recapped.io/cookies)
+- [DMCA Notice](https://www.recapped.io/dmca)
+- Contact: help@recapped.io (the only contact address published on the site and the public email on the GitHub organization). No security.txt and no dedicated vulnerability-disclosure address is published.
 
 ## Content
 - [Blog](https://www.recapped.io/blog): Company and sales-enablement blog.
-- [Templates](https://www.recapped.io/templates): Sales room template library.
+- [Revenue glossary](https://www.recapped.io/glossary): GTM terminology reference.
+- [Customers](https://www.recapped.io/customers)
+- [About](https://www.recapped.io/about)

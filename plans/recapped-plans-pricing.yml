@@ -1,0 +1,178 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: RecappED
+providerId: recapped
+generated: '2026-08-13'
+method: searched
+source: https://www.recapped.io/pricing
+modified: '2026-08-13'
+plan_count: 7
+description: >-
+  RecappED prices the digital sales room product per seat and per team; there is
+  no API plan, no developer tier and no usage-metered pricing, because RecappED
+  publishes no public API. The pricing page renders two parallel tier sets — a
+  per-user set (Free / Collaborate / Integrate / Automate) and a flat monthly set
+  (Free / Team / Business / Enterprise) — and the feature comparison table below
+  them uses a third set of labels (Free / Starter / Growth / Enterprise). Both
+  published sets are recorded verbatim below rather than reconciled, because the
+  provider does not reconcile them. NOTE: the site carries a sitewide banner
+  reading "Unfortunately, after 7 long years Recapped is shutting down 7/31/2026
+  and will not be taking on new customers" — these plans are still published but
+  are not purchasable by a new customer.
+sources:
+  - https://www.recapped.io/pricing
+  - https://www.recapped.io/
+tags:
+  - Sales
+  - Digital Sales Room
+  - Seat-Based
+accepting_new_customers: false
+plans:
+  - id: free
+    name: Free
+    set: per-user
+    type: free
+    price: 0
+    currency: USD
+    period: month
+    unit: user
+    seat_limit: 1
+    description: Free forever plan, limited to one user.
+    included:
+      - Unlimited digital sales rooms
+      - Embed 100+ content sources
+      - Buyer engagement analytics
+      - Mutual Action Plans
+      - Hide internal content
+      - Task manager
+      - Password protect
+  - id: collaborate
+    name: Collaborate
+    set: per-user
+    type: subscription
+    price: 45
+    currency: USD
+    period: month
+    unit: user
+    seat_limit: 4
+    description: Collaborate faster with every stakeholder.
+    included:
+      - Unlimited content management
+      - Unlimited collaborative workspaces
+      - Unlimited templates
+      - Unlimited view-only users
+      - Handoff to post-sales
+      - Leadership insights and trends
+      - Gong and Zoom integration
+      - Export to PDF
+      - Tab-level permissions
+      - Salesforce and HubSpot integration
+      - Automatic email reminders
+  - id: integrate
+    name: Integrate
+    set: per-user
+    type: subscription
+    price: 95
+    currency: USD
+    period: month
+    unit: user
+    seat_limit: 4
+    most_popular: true
+    description: Integrate your tech stack and sales process.
+    included:
+      - Salesforce and HubSpot integration
+      - Embed inside Salesforce
+      - Zapier integration
+      - Slack integration
+      - Org charts
+      - Deal tracker
+      - Custom deal scoring
+      - AI generated business cases
+  - id: automate
+    name: Automate
+    set: per-user
+    type: custom
+    price: null
+    currency: USD
+    period: null
+    description: >-
+      Automate execution with AI workflows. "Contact us" — no published price.
+    included:
+      - 10+ users
+      - Advanced user permissions
+      - AI CRM updates
+      - AI sales coaching
+      - AI MEDDICC grading
+      - AI generated content
+      - Custom color branding
+      - Guaranteed SLAs
+      - Single Sign On (SSO)
+      - Dedicated customer success
+      - White-glove onboarding
+  - id: team
+    name: Team
+    set: flat-monthly
+    type: subscription
+    price: 600
+    currency: USD
+    period: month
+    unit: account
+    description: Collaborate easily with every stakeholder. Unlimited users.
+    included:
+      - Unlimited users
+      - Unlimited content storage
+      - Unlimited collaborative workspaces
+      - Unlimited reusable templates
+      - Unlimited view-only licenses
+      - Leadership insights
+      - Gong and Zoom meeting insights
+      - PDF export
+      - Tab-level permissions
+      - Salesforce and HubSpot integration
+  - id: business
+    name: Business
+    set: flat-monthly
+    type: subscription
+    price: 1250
+    currency: USD
+    period: month
+    unit: account
+    most_popular: true
+    description: Integrate your tech stack and process.
+    included:
+      - Unlimited users
+      - Bi-directional Salesforce and HubSpot sync
+      - Embedded rooms inside Salesforce
+      - Zapier (7,000+ apps, no code)
+      - Slack real-time notifications
+      - Org charts
+      - Customizable Deal Tracker
+      - Custom health scoring
+      - AI generated business cases
+  - id: enterprise
+    name: Enterprise
+    set: flat-monthly
+    type: custom
+    price: null
+    currency: USD
+    period: null
+    description: >-
+      Automate execution with AI workflows. "Contact us" — no published price.
+    included:
+      - Unlimited users
+      - AI CRM updates
+      - AI sales coaching
+      - AI MEDDICC grading
+      - AI generated sales content
+      - Guaranteed SLAs
+      - Single Sign On (SSO)
+      - Dedicated customer success
+      - Mutual Action Plan training
+      - White-glove onboarding
+api_access:
+  public_api: false
+  note: >-
+    No tier grants API access. Programmatic connectivity is sold as the Zapier
+    integration (Integrate / Business tier and above) plus native Salesforce,
+    HubSpot, Slack, Gong and Zoom connectors — not as a developer API. No pricing
+    tier mentions an API key, quota, or rate limit.

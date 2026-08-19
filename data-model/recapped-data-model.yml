@@ -1,0 +1,166 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/Recapped/customer-offboarding-docs
+source_raw: https://raw.githubusercontent.com/Recapped/customer-offboarding-docs/main/README.md
+verbatim_copy: data-model/recapped-workspace-data-model.md
+ownership_note: >-
+  Published by RecappED itself: the repository lives in the github.com/Recapped
+  organization, whose public profile name is "Recapped.io" and whose public
+  contact email is help@recapped.io — the same address in the footer of every
+  page on www.recapped.io. It documents the customer data export RecappED
+  produces for offboarding ahead of the 2026-07-31 shutdown.
+docs: https://github.com/Recapped/customer-offboarding-docs
+description: >-
+  RecappED publishes no OpenAPI and no public API, but it does publish one real
+  machine-oriented document: the schema of the customer data export shipped with
+  offboarding. Five denormalized report datasets (workspace_meta_data, tabs_data,
+  blocks_data, tasks_data, comments_data) carry the workspace hierarchy, and the
+  document names the exact join keys and ordering fields needed to reconstruct a
+  workspace. This artifact is the entity-relationship graph read from that
+  document — it describes the export, not an API response.
+notation: >-
+  relationships use has_one / has_many / belongs_to with the join field named in
+  the provider's own document; direction is from the entity that owns the
+  reference.
+datasets:
+  - name: workspace_meta_data
+    grain: one row per workspace
+    entity: Workspace
+  - name: tabs_data
+    grain: one row per tab within a workspace
+    entity: Tab
+  - name: blocks_data
+    grain: one row per content block within a tab
+    entity: ContentBlock
+  - name: tasks_data
+    grain: one row per task within a task block
+    entity: Task
+  - name: comments_data
+    grain: one row per comment within a workspace
+    entity: Comment
+
+entities:
+  - name: Workspace
+    key: workspace_id
+    domain: core
+    description: >-
+      A digital sales room. Carries workspace URL, title, status, state, tab
+      ordering, owner (name/position/email), internal and external collaborators,
+      and CRM opportunity/account metadata when available (account name,
+      opportunity name, opportunity id, stage, amount, close date).
+  - name: Tab
+    key: tab_id
+    domain: core
+    description: A page within a workspace; carries title, order position and a client-facing flag.
+  - name: ContentBlock
+    key: block_id
+    domain: content
+    description: >-
+      A content block within a tab. block_type is one of text, files, links,
+      images, tasks, crm and others; carries the full block payload as JSON, a
+      human-readable content reference name, display order and a client-facing flag.
+  - name: TaskBlock
+    key: block_id
+    domain: content
+    description: >-
+      A ContentBlock whose block_type is `tasks` — the milestone container that
+      owns tasks and carries task ordering.
+  - name: Task
+    key: task_id
+    domain: execution
+    description: >-
+      A single task inside a task block; carries title, description, due date,
+      completion status, order position and a client-facing flag.
+  - name: Assignee
+    key: id
+    domain: people
+    description: >-
+      A user assigned to a task. type is `internal` or `external`; carries id and name.
+  - name: Attachment
+    key: task_attachment_id
+    domain: content
+    description: A file attached to a task; carries id, task_attachment_id and title.
+  - name: CommentThread
+    key: thread_id
+    domain: collaboration
+    description: >-
+      A conversation within a workspace; carries order position, external status
+      and resolved status.
+  - name: CommentAnchor
+    key: comment_anchor_id
+    domain: collaboration
+    description: >-
+      Determines where a thread renders. comment_anchor_type is workspace / block
+      / task, resolved by whichever of comment_anchors.recap_id,
+      comment_anchors.block_id or comment_anchors.task_id is non-null.
+  - name: Comment
+    key: comment_id
+    domain: collaboration
+    description: >-
+      A single comment in a thread; carries body, order position, client-facing
+      status, created/updated timestamps and author.
+  - name: CommentAuthor
+    key: author_id
+    domain: people
+    description: >-
+      Author of a comment. author_type is `internal` or `external`; carries
+      author_name and author_email.
+  - name: EmojiReaction
+    key: id
+    domain: collaboration
+    description: A reaction on a comment; carries emoji, reactor id, type and name.
+  - name: Collaborator
+    key: id
+    domain: people
+    description: >-
+      A participant on a workspace. Internal collaborators carry id, type, name,
+      email; external collaborators additionally carry phone, roles, crm_record
+      and an accepted flag.
+
+relationships:
+  - {from: Workspace, to: Tab, kind: has_many, via: workspace_id}
+  - {from: Workspace, to: Collaborator, kind: has_many, via: workspace_id}
+  - {from: Workspace, to: CommentThread, kind: has_many, via: workspace_id}
+  - {from: Tab, to: ContentBlock, kind: has_many, via: tab_id}
+  - {from: ContentBlock, to: Tab, kind: belongs_to, via: tab_id}
+  - {from: TaskBlock, to: Task, kind: has_many, via: block_id}
+  - {from: Task, to: TaskBlock, kind: belongs_to, via: block_id}
+  - {from: Task, to: Assignee, kind: has_many, via: task_id}
+  - {from: Task, to: Attachment, kind: has_many, via: task_id}
+  - {from: CommentThread, to: Comment, kind: has_many, via: thread_id}
+  - {from: CommentThread, to: CommentAnchor, kind: has_one, via: comment_anchor_id}
+  - {from: Comment, to: CommentAuthor, kind: belongs_to, via: author_id}
+  - {from: Comment, to: EmojiReaction, kind: has_many, via: comment_id}
+  - {from: CommentAnchor, to: Workspace, kind: belongs_to, via: recap_id}
+  - {from: CommentAnchor, to: ContentBlock, kind: belongs_to, via: block_id}
+  - {from: CommentAnchor, to: Task, kind: belongs_to, via: task_id}
+
+join_keys:
+  - {field: workspace_id, purpose: Links all records to the same workspace.}
+  - {field: tab_id, purpose: Links content blocks and tasks to their parent tab.}
+  - {field: block_id, purpose: Links tasks and block-level comments to their parent block.}
+  - {field: task_id, purpose: Links task-level comments to their parent task.}
+  - {field: thread_id, purpose: Groups comments into conversations.}
+  - {field: comment_id, purpose: Identifies an individual comment.}
+
+ordering_fields:
+  - {field: tab_order_position, purpose: Orders tabs within a workspace.}
+  - {field: content_order_position, purpose: Orders content blocks within a tab.}
+  - {field: task_order_position, purpose: Orders tasks within a task block.}
+  - {field: thread_order_position, purpose: Orders threads within a workspace.}
+  - {field: comment_order_position, purpose: Orders comments within a thread.}
+
+reconstruction_procedure:
+  - Start with the workspace from workspace_meta_data.
+  - Add tabs from tabs_data, ordered by tab_order_position.
+  - Add content blocks from blocks_data, ordered by content_order_position.
+  - For each block where block_type = tasks, attach tasks_data rows via block_id, ordered by task_order_position.
+  - Add comments from comments_data, placing each by comment_anchor_type (workspace / block via block_id / task via task_id).
+
+limits:
+  - This describes an offboarding EXPORT, not an API. No endpoint, no request
+    shape and no authentication is documented for retrieving it.
+  - Field names are given in prose in the provider's document; the ones quoted
+    above (workspace_id, tab_order_position, comment_anchors.recap_id, …) are
+    verbatim from it. Fields described only in prose are recorded as descriptions
+    rather than invented column names.

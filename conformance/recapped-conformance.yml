@@ -1,0 +1,124 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://www.recapped.io/security (compliance section + AICPA SOC / GDPR / CCPA
+  badge images), https://www.recapped.io/privacy (section 10, California
+  residents / CCPA as amended by CPRA), plus live probes recorded in
+  well-known/recapped-well-known.yml and security/recapped-domain-security.yml.
+scope: >-
+  Cross-cutting standards conformance for RecappED. RecappED publishes no API, so
+  the API-shaped standards below (OAuth 2.0 as an authorization surface, OIDC
+  discovery, RFC 9457, pagination, idempotency, webhook signing) are all recorded
+  as not-conformant on the basis of a genuine absence — there is no contract in
+  which they could be expressed. The compliance claims that ARE published are
+  corporate/security-program claims, and they are unverified marketing assertions
+  rather than published attestations: the security page says the reports are
+  "available upon request, with an NDA in place".
+standards:
+  - id: soc2
+    conforms: true
+    verified: false
+    evidence: >-
+      "active upkeep on SOC1, SOC2, and other compliance certifications"
+      (www.recapped.io/security), with an AICPA SOC badge rendered on the page.
+      No report, date, auditor or Type I/II designation is published; access is
+      gated behind an NDA.
+  - id: soc1
+    conforms: true
+    verified: false
+    evidence: Same sentence on www.recapped.io/security names SOC1 alongside SOC2.
+  - id: gdpr
+    conforms: true
+    verified: false
+    evidence: >-
+      GDPR badge image published on www.recapped.io/security. No DPA, no EU
+      representative and no transfer mechanism (SCCs) is linked from the public
+      site.
+  - id: ccpa
+    conforms: true
+    verified: false
+    evidence: >-
+      CCPA badge on www.recapped.io/security, plus a substantive "10. CALIFORNIA
+      RESIDENTS" section in the privacy policy addressing the CCPA as amended by
+      the CPRA.
+  - id: penetration-testing
+    conforms: true
+    verified: false
+    evidence: >-
+      "regular and active penetration tests, third-party audits"
+      (www.recapped.io/security). No summary letter or cadence is published.
+  - id: subprocessor-transparency
+    conforms: partial
+    verified: false
+    evidence: >-
+      "We also maintain a current list of all subprocessors … available upon
+      request, with an NDA in place" (www.recapped.io/security). The list is not
+      published, so it is not public transparency.
+  - id: sso-saml-oidc-enduser
+    conforms: true
+    verified: false
+    evidence: >-
+      End-user single sign-on across Okta, Google, LinkedIn and Microsoft
+      (www.recapped.io/security). This is application sign-in, NOT an API
+      authorization surface — it grants no programmatic access.
+  - id: tls
+    conforms: true
+    verified: true
+    evidence: >-
+      TLS 1.3 with HSTS (max-age 31536000) observed on www.recapped.io; site
+      states "enterprise-grade 256bit SSL/HTTPS". See
+      security/recapped-domain-security.yml.
+  - id: dnssec
+    conforms: false
+    verified: true
+    evidence: recapped.io is not DNSSEC-signed (probed 2026-08-13).
+  - id: caa
+    conforms: false
+    verified: true
+    evidence: No CAA records published for recapped.io (probed 2026-08-13).
+  - id: spf-dmarc
+    conforms: true
+    verified: true
+    evidence: SPF present; DMARC present with policy p=quarantine (probed 2026-08-13).
+  - id: rfc9116-security-txt
+    conforms: false
+    verified: true
+    evidence: >-
+      /.well-known/security.txt returns 404 on www.recapped.io and an HTML SPA
+      shell (soft-200) on app.recapped.io.
+  - id: oauth2
+    conforms: false
+    verified: true
+    evidence: >-
+      No OAuth authorization surface for third parties;
+      /.well-known/oauth-authorization-server is absent on every host.
+  - id: oidc
+    conforms: false
+    verified: true
+    evidence: /.well-known/openid-configuration absent on every host.
+  - id: openapi
+    conforms: false
+    verified: true
+    evidence: >-
+      No OpenAPI/Swagger document at any probed location on www.recapped.io or
+      app.recapped.io; api.recapped.io, docs.recapped.io and
+      developer(s).recapped.io do not resolve in DNS.
+  - id: rfc9457-problem-details
+    conforms: false
+    verified: true
+    evidence: No public API and no published error reference.
+  - id: pagination
+    conforms: false
+    verified: true
+    evidence: No public API contract in which pagination could be expressed.
+  - id: idempotency
+    conforms: false
+    verified: true
+    evidence: No public API contract; no Idempotency-Key semantics documented.
+  - id: webhook-signing
+    conforms: false
+    verified: true
+    evidence: >-
+      No webhook catalog is published. Zapier connectivity is marketed on the
+      pricing and features pages, but no public Zapier app exists at
+      zapier.com/apps/recapped* (404), and no trigger/action surface is documented.
