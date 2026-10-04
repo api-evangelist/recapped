@@ -54,6 +54,7 @@ tags:
 - Customer Onboarding
 - CRM
 - Revenue Operations
+- Defunct
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -120,3 +121,4 @@ x-coverage:
   - url: https://raw.githubusercontent.com/Recapped/customer-offboarding-docs/main/README.md
     status: 200
   checked: '2026-08-13'
+x-status: defunct
