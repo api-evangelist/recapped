@@ -176,3 +176,66 @@ api_access:
     integration (Integrate / Business tier and above) plus native Salesforce,
     HubSpot, Slack, Gong and Zoom connectors — not as a developer API. No pricing
     tier mentions an API key, quota, or rate limit.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  - subscription
+  units:
+  - object
+  - seat
+  plans:
+  - name: Free
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Collaborate
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Integrate
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Automate
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units: []
+    periods: []
+  - name: Team
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: Enterprise
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units: []
+    periods: []
